@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth'
 import { login, logout } from './store/authSlice'
 import { Header, Footer } from './components/index'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,12 +23,12 @@ function App() {
 
 
 
-  return ! loading ? (
+  return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
       <div>
         <Header/>
         <main>
-          {/* <outlet/> */}
+          <Outlet/>
         </main>
         <Footer/>
       </div>

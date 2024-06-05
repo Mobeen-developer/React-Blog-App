@@ -7,17 +7,17 @@ import { useSelector } from "react-redux";
 
 
 export default function PostForm({ post }) {
-    const { register, handleSubmit, control, watch, setValue } = useForm({
+    const { register, handleSubmit, control, watch, setValue, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
-            slug: post?.slug || "",
+            slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
 
-        }
+        },
     });
     const navigate = useNavigate();
-    const userData = useSelector(state => state.user.userData);
+    const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
         if (post) {
@@ -54,7 +54,7 @@ export default function PostForm({ post }) {
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string") {
-            return value.trim().toLowerCase().replace(/^[a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
+            return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
         } else {
             return "";
         }
@@ -89,7 +89,8 @@ export default function PostForm({ post }) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                <RTE label="Content :" name="content" control={control} 
+                defaultValue={ getValues("content") } />
             </div>
             <div className="w-1/3 px-2">
                 <Input
@@ -102,7 +103,7 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={service.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />

@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Protected({children, authentication = true}){
+    console.log("Signup page protected comp hit")
     const navigate = useNavigate();
     const [loader, setLoader] = useState(true);
-    const authStatus = useSelector((state) => state.auth.status);
+    const authStatus = useSelector(state => state.auth.status);
 
     useEffect(() => {
         if (authentication && authStatus !== authentication) {
@@ -18,5 +19,5 @@ export default function Protected({children, authentication = true}){
         setLoader(false);
     }, [authStatus, authentication, navigate])
 
-    return loader ? <div>Loading...</div> : <>children</>;
+    return loader ? <div>Loading...</div> : <>{children}</>;
 }

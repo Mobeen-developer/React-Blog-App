@@ -13,7 +13,7 @@ import Login from "./Login"
 import PostCard from "./PostCard"
 import AuthLayout from "./AuthLayout"
 
-export default {
+export {
     Header,
     Footer,
     Logo,

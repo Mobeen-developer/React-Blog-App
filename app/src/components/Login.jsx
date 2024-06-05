@@ -18,7 +18,7 @@ function Login() {
         try {
             const session = await authService.login(data);
             if (session) {
-                const userData = await authService.getUserData();
+                const userData = await authService.getCurrentUser();
                 if (userData) dispatch(authLogin(userData));
                 navigate("/");
             }
@@ -67,7 +67,7 @@ function Login() {
                          })}   
                          />
 
-                         <Button type="submit" className="w-full">
+                         <Button type="submit" className="w-full">Login
 
                          </Button>
                     </div>

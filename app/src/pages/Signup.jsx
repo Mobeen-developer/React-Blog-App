@@ -1,8 +1,9 @@
 import React from "react";
-import { Singup as SignupComponent } from "../components/index";
+import { Singup as SignupComponent } from "../components";
 
 export default function Signup() {
     return (
+        
         <div className="py-8">
             <SignupComponent/>
         </div>
