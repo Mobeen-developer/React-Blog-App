@@ -19,7 +19,7 @@ export default function Home() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold hover:text-gray-500">
+                            <h1 className="text-2xl font-bold hover:text-green-400 text-white">
                                 No Posts to read
                             </h1>
                         </div>

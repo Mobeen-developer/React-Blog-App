@@ -39,7 +39,7 @@ export default function Post() {
                     <img
                         src={service.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl h-96 w-96"
                     />
 
                     {isAuthor && (
@@ -56,9 +56,9 @@ export default function Post() {
                     )}
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                    <h1 className="text-center text-white text-2xl font-bold">{post.title}</h1>
                 </div>
-                <div className="browser-css">
+                <div className="browser-css text-center text-white bg-black">
                     {parse(post.content)}
                     </div>
             </Container>
